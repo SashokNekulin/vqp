@@ -158,7 +158,7 @@ export default class Schema {
   /**
    * Тип приведен к `obj`.
    *
-   * @param {Object} obj - the object to typecast
+   * @param {Object} obj - объект для проверки
    * @return {Schema}
    * @private
    */
@@ -179,7 +179,7 @@ export default class Schema {
   /**
    * Удалите все ключи, не определенные в схеме
    *
-   * @param {Object} obj - the object to strip
+   * @param {Object} obj - объект для отчистки
    * @param {String} [prefix]
    * @return {Schema}
    * @private
@@ -198,7 +198,7 @@ export default class Schema {
   /**
    * Создать ошибки для всех свойств, которые не определены в схеме
    *
-   * @param {Object} obj - the object to check
+   * @param {Object} obj - объект для проверки
    * @return {Schema}
    * @private
    */
@@ -217,7 +217,7 @@ export default class Schema {
   }
 
   /**
-   * Validate given `obj`.
+   * Проверить `obj`.
    *
    * @example
    * const schema = new Schema({ name: { required: true }})
@@ -226,8 +226,8 @@ export default class Schema {
    * assert(errors[0].message == 'name is required')
    * assert(errors[0].path == 'name')
    *
-   * @param {Object} obj - the object to validate
-   * @param {Object} [opts] - options, see [Schema](#schema-1)
+   * @param {Object} obj - объект для проверки
+   * @param {Object} [opts] - варианты см. [Schema](#schema-1)
    * @return {Array}
    */
 
@@ -259,7 +259,7 @@ export default class Schema {
   }
 
   /**
-   * Assert that given `obj` is valid.
+   * Утверждайте, что данный "объект" является валидным.
    *
    * @example
    * const schema = new Schema({ name: String })
@@ -275,7 +275,7 @@ export default class Schema {
   }
 
   /**
-   * Override default error messages.
+   * Переопределить сообщения об ошибках по умолчанию.
    *
    * @example
    * const hex = (val) => /^0x[0-9a-f]+$/.test(val)
@@ -285,8 +285,8 @@ export default class Schema {
    * @example
    * schema.message({ hex: path => `${path} must be hexadecimal` })
    *
-   * @param {String|Object} name - name of the validator or an object with name-message pairs
-   * @param {String|Function} [message] - the message or message generator to use
+   * @param {String|Object} name - имя валидатора или объекта с парами имя-сообщение
+   * @param {String|Function} [message] - сообщение или генератор сообщений для использования
    * @return {Schema}
    */
 
@@ -296,7 +296,7 @@ export default class Schema {
   }
 
   /**
-   * Override default validators.
+   * Переопределить валидаторы по умолчанию.
    *
    * @example
    * schema.validator('required', val => val != null)
@@ -304,8 +304,8 @@ export default class Schema {
    * @example
    * schema.validator({ required: val => val != null })
    *
-   * @param {String|Object} name - name of the validator or an object with name-function pairs
-   * @param {Function} [fn] - the function to use
+   * @param {String|Object} name - имя валидатора или объекта с парами имя-функция
+   * @param {Function} [fn] - функция обратного вызова
    * @return {Schema}
    */
 
@@ -315,7 +315,7 @@ export default class Schema {
   }
 
   /**
-   * Override default typecasters.
+   * Переопределить стандартные типы типов.
    *
    * @example
    * schema.typecaster('SomeClass', val => new SomeClass(val))
@@ -323,8 +323,8 @@ export default class Schema {
    * @example
    * schema.typecaster({ SomeClass: val => new SomeClass(val) })
    *
-   * @param {String|Object} name - name of the validator or an object with name-function pairs
-   * @param {Function} [fn] - the function to use
+   * @param {String|Object} name - имя валидатора или объекта с парами имя-функция
+   * @param {Function} [fn] - функция обратного вызова
    * @return {Schema}
    */
 
@@ -334,9 +334,9 @@ export default class Schema {
   }
 
   /**
-   * Accepts a function that is called whenever new props are added.
+   * Принимает функцию, которая вызывается при добавлении новых реквизитов.
    *
-   * @param {Function} fn - the function to call
+   * @param {Function} fn - функция обратного вызова
    * @return {Schema}
    * @private
    */
@@ -347,10 +347,10 @@ export default class Schema {
   }
 
   /**
-   * Notify all subscribers that a property has been added.
+   * Сообщить всем подписчикам, что свойство было добавлено.
    *
-   * @param {String} path - the path of the property
-   * @param {Property} prop - the new property
+   * @param {String} path - путь к свойству
+   * @param {Property} prop - новое свойство
    * @return {Schema}
    * @private
    */
@@ -361,5 +361,5 @@ export default class Schema {
   }
 }
 
-// Export ValidationError
+// экспорт ValidationError
 Schema.ValidationError = ValidationError;

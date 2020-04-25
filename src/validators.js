@@ -8,7 +8,7 @@ import typeOf from 'component-type';
 
 const Validators = {
   /**
-   * Validates presence.
+   * Подтверждает присутствие.
    *
    * @param {Mixed} value - проверяемое значение
    * @param {Object} ctx - проверяемый объект
@@ -22,7 +22,7 @@ const Validators = {
   },
 
   /**
-   * Validates type.
+   * Проверяет тип.
    *
    * @param {Mixed} value - проверяемое значение
    * @param {Object} ctx - проверяемый объект
@@ -41,11 +41,11 @@ const Validators = {
   },
 
   /**
-   * Validates length.
+   * Проверяет длину.
    *
    * @param {String} value проверяемая строка
    * @param {Object} ctx проверяемый объект
-   * @param {Object|Number} rules object with .min and/or .max props or a number
+   * @param {Object|Number} rules Объект с .min и/или .max свойством или число
    * @param {Number} [rules.min] - минимальная длина
    * @param {Number} [rules.max] - максимальная длина
    * @return {Boolean}
@@ -63,11 +63,11 @@ const Validators = {
   },
 
   /**
-   * Validates size.
+   * Проверяет размер.
    *
    * @param {Number} value проверяемый номер
    * @param {Object} ctx проверяемый объект
-   * @param {Object|Number} size object with .min and/or .max props or a number
+   * @param {Object|Number} size Объект with .min and/or .max свойством или число
    * @param {String|Number} [size.min] - минимальный размер
    * @param {String|Number} [size.max] - максимальный размер
    * @return {Boolean}
@@ -85,7 +85,7 @@ const Validators = {
   },
 
   /**
-   * Validates enums.
+   * Проверяет перечисления.
    *
    * @param {String} value проверяемая строка
    * @param {Object} ctx проверяемый объект
@@ -99,7 +99,7 @@ const Validators = {
   },
 
   /**
-   * Validates against given `regexp`.
+   * Проверяет соответствие заданному регулярному выражению.
    *
    * @param {String} value проверяемая строка
    * @param {Object} ctx проверяемый объект

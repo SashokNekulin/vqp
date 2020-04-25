@@ -60,12 +60,12 @@ export default class Property {
   }
 
   /**
-   * Validate using named functions from the given object.
-   * Error messages can be defined by providing an object with
-   * named error messages/generators to `schema.message()`
+   * Проверка с использованием именованных функций из данного объекта.
+   * Сообщения об ошибках можно определить, предоставив объекту
+   * именованные сообщения об ошибках / генераторы для `schema.message()`
    *
-   * The message generator receives the value being validated,
-   * the object it belongs to and any additional arguments.
+   * Генератор сообщений получает проверяемое значение,
+   * объект, к которому он принадлежит, и любые дополнительные аргументы.
    *
    * @example
    * const schema = new Schema()
@@ -81,7 +81,7 @@ export default class Property {
    *   bits: [(val, ctx, bits) => val.length == bits, 32]
    * })
    *
-   * @param {Object} fns - object with named validation functions to call
+   * @param {Object} fns - объект с именованными функциями проверки для вызова
    * @return {Property}
    */
 
@@ -97,12 +97,12 @@ export default class Property {
   }
 
   /**
-   * Registers a validator that checks for presence.
+   * Регистрирует валидатор, который проверяет наличие.
    *
    * @example
    * prop.required()
    *
-   * @param {Boolean} [bool] - `true` if required, `false` otherwise
+   * @param {Boolean} [bool] - `true` если требуется,` false` в противном случае
    * @return {Property}
    */
 
@@ -111,7 +111,7 @@ export default class Property {
   }
 
   /**
-   * Registers a validator that checks if a value is of a given `type`
+   * Регистрирует валидатор, который проверяет, имеет ли значение заданный тип
    *
    * @example
    * prop.type(String)
@@ -119,7 +119,7 @@ export default class Property {
    * @example
    * prop.type('string')
    *
-   * @param {String|Function} type - type to check for
+   * @param {String|Function} type - тип для проверки
    * @return {Property}
    */
 
@@ -129,7 +129,7 @@ export default class Property {
   }
 
   /**
-   * Convenience method for setting type to `String`
+   * Удобный метод для установки типа в `String`
    *
    * @example
    * prop.string()
@@ -142,7 +142,7 @@ export default class Property {
   }
 
   /**
-   * Convenience method for setting type to `Number`
+   * Удобный метод для установки типа на `Number`
    *
    * @example
    * prop.number()
@@ -155,7 +155,7 @@ export default class Property {
   }
 
   /**
-   * Convenience method for setting type to `Array`
+   * Удобный метод для установки типа в `Array`
    *
    * @example
    * prop.array()
@@ -168,7 +168,7 @@ export default class Property {
   }
 
   /**
-   * Convenience method for setting type to `Date`
+   * Удобный метод для установки типа на `Date`
    *
    * @example
    * prop.date()
@@ -181,15 +181,15 @@ export default class Property {
   }
 
   /**
-   * Registers a validator that checks length.
+   * Регистрирует валидатор, который проверяет длину.
    *
    * @example
    * prop.length({ min: 8, max: 255 })
    * prop.length(10)
    *
-   * @param {Object|Number} rules - object with `.min` and `.max` properties or a number
-   * @param {Number} rules.min - minimum length
-   * @param {Number} rules.max - maximum length
+   * @param {Object|Number} rules - ОбЪект с `.min` и `.max` свойствами или Number
+   * @param {Number} rules.min - минимальная длина
+   * @param {Number} rules.max - максимальная длина
    * @return {Property}
    */
 
@@ -198,15 +198,15 @@ export default class Property {
   }
 
   /**
-   * Registers a validator that checks size.
+   * Регистрирует валидатор, который проверяет размер.
    *
    * @example
    * prop.size({ min: 8, max: 255 })
    * prop.size(10)
    *
-   * @param {Object|Number} rules - object with `.min` and `.max` properties or a number
-   * @param {Number} rules.min - minimum size
-   * @param {Number} rules.max - maximum size
+   * @param {Object|Number} rules - ОбЪект с `.min` и `.max` свойствами или Number
+   * @param {Number} rules.min - минимальный размер
+   * @param {Number} rules.max - максимальный размер
    * @return {Property}
    */
 
@@ -215,12 +215,12 @@ export default class Property {
   }
 
   /**
-   * Registers a validator for enums.
+   * Регистрирует валидатор для перечислений.
    *
    * @example
    * prop.enum(['cat', 'dog'])
    *
-   * @param {Array} rules - allowed values
+   * @param {Array} rules - допустимые значения
    * @return {Property}
    */
 
@@ -229,12 +229,12 @@ export default class Property {
   }
 
   /**
-   * Registers a validator that checks if a value matches given `regexp`.
+   * Регистрирует валидатор, который проверяет, соответствует ли значение заданному `regexp`.
    *
    * @example
    * prop.match(/some\sregular\sexpression/)
    *
-   * @param {RegExp} regexp - regular expression to match
+   * @param {RegExp} regexp - регулярное выражение для соответствия
    * @return {Property}
    */
 
@@ -243,7 +243,7 @@ export default class Property {
   }
 
   /**
-   * Registers a validator that checks each value in an array against given `rules`.
+   * Регистрирует валидатор, который проверяет каждое значение в массиве на соответствие заданным «правилам».
    *
    * @example
    * prop.each({ type: String })
@@ -251,7 +251,7 @@ export default class Property {
    * prop.each({ things: [{ type: String }]})
    * prop.each(schema)
    *
-   * @param {Array|Object|Schema|Property} rules - rules to use
+   * @param {Array|Object|Schema|Property} rules - правила использования
    * @return {Property}
    */
 
@@ -261,12 +261,12 @@ export default class Property {
   }
 
   /**
-   * Registers paths for array elements on the parent schema, with given array of rules.
+   * Регистрирует пути для элементов массива в родительской схеме с заданным массивом правил.
    *
    * @example
    * prop.elements([{ type: String }, { type: Number }])
    *
-   * @param {Array} arr - array of rules to use
+   * @param {Array} arr - массив правил для использования
    * @return {Property}
    */
 
@@ -278,7 +278,7 @@ export default class Property {
   }
 
   /**
-   * Registers all properties from the given object as nested properties
+   * Регистрирует все свойства данного объекта как вложенные свойства
    *
    * @example
    * prop.properties({
@@ -286,7 +286,7 @@ export default class Property {
    *   email: String
    * })
    *
-   * @param {Object} props - properties with rules
+   * @param {Object} props - свойства с правилами
    * @return {Property}
    */
 
@@ -298,7 +298,7 @@ export default class Property {
   }
 
   /**
-   * Proxy method for schema path. Makes chaining properties together easier.
+   * Прокси-метод для пути к схеме. Упрощает сцепление свойств.
    *
    * @example
    * schema
@@ -312,13 +312,13 @@ export default class Property {
   }
 
   /**
-   * Typecast given `value`
+   * Приводит значение к заданому типу
    *
    * @example
    * prop.type(String)
    * prop.typecast(123) // => '123'
    *
-   * @param {Mixed} value - value to typecast
+   * @param {Mixed} value - значение
    * @return {Mixed}
    */
 
@@ -336,23 +336,23 @@ export default class Property {
       schema.typecasters[type.toLowerCase()];
 
     if (typeof cast != 'function') {
-      throw new Error(`Typecasting failed: No typecaster defined for ${type}.`);
+      throw new Error(`Не удалось приввести к типу: Не известный тип: ${type}.`);
     }
 
     return cast(value);
   }
 
   /**
-   * Validate given `value`
+   * Проверка заданного "значения"
    *
    * @example
    * prop.type(Number)
    * assert(prop.validate(2) == null)
    * assert(prop.validate('hello world') instanceof Error)
    *
-   * @param {Mixed} value - value to validate
-   * @param {Object} ctx - the object containing the value
-   * @param {String} [path] - path of the value being validated
+   * @param {Mixed} value - значение для проверки
+   * @param {Object} ctx - объект, содержащий значение
+   * @param {String} [path] - путь к проверяемому значению
    * @return {ValidationError}
    */
 
@@ -368,12 +368,12 @@ export default class Property {
   }
 
   /**
-   * Run validator of given `type`
+   * Запустите валидатор с указанным типом
    *
-   * @param {String} type - type of validator
-   * @param {Mixed} value - value to validate
-   * @param {Object} ctx - the object containing the value
-   * @param {String} path - path of the value being validated
+   * @param {String} type - тип валидатора
+   * @param {Mixed} value - значение для проверки
+   * @param {Object} ctx - объект, содержащий значение
+   * @param {String} path - путь проверяемого значения
    * @return {ValidationError}
    * @private
    */
@@ -388,11 +388,11 @@ export default class Property {
   }
 
   /**
-   * Register validator
+   * Зарегистрировать валидатор
    *
-   * @param {String} type - type of validator
-   * @param {Array} args - argument to pass to validator
-   * @param {Function} [fn] - custom validation function to call
+   * @param {String} type - тип валидатора
+   * @param {Array} args - аргумент для передачи в валидатор
+   * @param {Function} [fn] - пользовательская функция проверки для вызова
    * @return {Property}
    * @private
    */
@@ -403,12 +403,12 @@ export default class Property {
   }
 
   /**
-   * Create an error
+   * Создать сообщение об ошибке
    *
-   * @param {String} type - type of validator
-   * @param {Object} ctx - the object containing the value
-   * @param {Array} args - arguments to pass
-   * @param {String} path - path of the value being validated
+   * @param {String} type - тип валидатора
+   * @param {Object} ctx - объект, содержащий значение
+   * @param {Array} args - аргументы для передачи
+   * @param {String} path - путь к проверяемому значению
    * @return {ValidationError}
    * @private
    */

@@ -5,7 +5,7 @@
  */
 
 const Messages = {
-  // Type message
+  // Сообщение если не соотведствует типу
   type(prop, ctx, type) {
     if (typeof type == 'function') {
       type = type.name;
@@ -14,17 +14,17 @@ const Messages = {
     return `${prop} должно быть по типу ${type}.`;
   },
 
-  // Required message
+  // Сообщение если не передан обязательный параметр
   required(prop) {
     return `${prop} обязательный параметр.`;
   },
 
-  // Match message
+  // Сообщение если не соотведствует регулярному вырожению
   match(prop, ctx, regexp) {
     return `${prop} должен соответствовать ${regexp}.`;
   },
 
-  // Length message
+  // Сообщение если не соотведствует длинне
   length(prop, ctx, len) {
     if (typeof len == 'number') {
       return `${prop} должен иметь длину ${len}.`;
@@ -43,7 +43,7 @@ const Messages = {
     }
   },
 
-  // Size message
+  // Сообщение если не соотведствует размеру
   size(prop, ctx, size) {
     if (typeof size == 'number') {
       return `${prop} должен иметь размер ${size}.`;
@@ -62,19 +62,19 @@ const Messages = {
     }
   },
 
-  // Enum message
+  // Сообщение если не соотведствует перечеслению
   enum(prop, ctx, enums) {
     const copy = enums.slice();
     const last = copy.pop();
     return `${prop} должно быть либо ${copy.join(', ')} или ${last}.`;
   },
 
-  // Illegal property
+  // Сообщение если не соотведствует схеме
   illegal(prop) {
     return `${prop} не допускается.`;
   },
 
-  // Default message
+  // Сообщение по умолчанию
   default(prop) {
     return `Проверка не удалась для ${prop}.`;
   }
