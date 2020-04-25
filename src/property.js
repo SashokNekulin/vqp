@@ -2,11 +2,11 @@ import ValidationError from './error';
 import { join } from './utils';
 
 /**
- * A property instance gets returned whenever you call `schema.path()`.
- * Properties are also created internally when an object is passed to the Schema constructor.
+ * Экземпляр свойства возвращается при каждом вызове `schema.path()`.
+ * Свойства также создаются внутри, когда объект передается конструктору схемы.
  *
- * @param {String} name - the name of the property
- * @param {Schema} schema - parent schema
+ * @param {String} name - название свойства
+ * @param {Schema} schema - вложеная схема
  */
 
 export default class Property {
@@ -19,11 +19,11 @@ export default class Property {
   }
 
   /**
-   * Registers messages.
+   * Регистрирует сообщения.
    *
    * @example
-   * prop.message('something is wrong')
-   * prop.message({ required: 'thing is required.' })
+   * prop.message('что-то не так')
+   * prop.message({ required: 'параметр обязателен.' })
    *
    * @param {Object|String} messages
    * @return {Property}
@@ -44,13 +44,13 @@ export default class Property {
   }
 
   /**
-   * Mount given `schema` on current path.
+   * Смонтировать заданную схему на текущем пути.
    *
    * @example
    * const user = new Schema({ email: String })
    * prop.schema(user)
    *
-   * @param {Schema} schema - the schema to mount
+   * @param {Schema} schema - схема для монтирования
    * @return {Property}
    */
 

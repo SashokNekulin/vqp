@@ -1,7 +1,7 @@
 import typeOf from 'component-type';
 
 /**
- * Default validators.
+ * Стандартные валидаторы.
  *
  * @private
  */
@@ -10,8 +10,8 @@ const Validators = {
   /**
    * Validates presence.
    *
-   * @param {Mixed} value - the value being validated
-   * @param {Object} ctx - the object being validated
+   * @param {Mixed} value - проверяемое значение
+   * @param {Object} ctx - проверяемый объект
    * @param {Bolean} required
    * @return {Boolean}
    */
@@ -24,9 +24,9 @@ const Validators = {
   /**
    * Validates type.
    *
-   * @param {Mixed} value - the value being validated
-   * @param {Object} ctx - the object being validated
-   * @param {String|Function} name name of the type or a constructor
+   * @param {Mixed} value - проверяемое значение
+   * @param {Object} ctx - проверяемый объект
+   * @param {String|Function} name имя типа или конструктора
    * @return {Boolean}
    */
 
@@ -43,11 +43,11 @@ const Validators = {
   /**
    * Validates length.
    *
-   * @param {String} value the string being validated
-   * @param {Object} ctx the object being validated
+   * @param {String} value проверяемая строка
+   * @param {Object} ctx проверяемый объект
    * @param {Object|Number} rules object with .min and/or .max props or a number
-   * @param {Number} [rules.min] - minimum length
-   * @param {Number} [rules.max] - maximum length
+   * @param {Number} [rules.min] - минимальная длина
+   * @param {Number} [rules.max] - максимальная длина
    * @return {Boolean}
    */
 
@@ -65,11 +65,11 @@ const Validators = {
   /**
    * Validates size.
    *
-   * @param {Number} value the number being validated
-   * @param {Object} ctx the object being validated
+   * @param {Number} value проверяемый номер
+   * @param {Object} ctx проверяемый объект
    * @param {Object|Number} size object with .min and/or .max props or a number
-   * @param {String|Number} [size.min] - minimum size
-   * @param {String|Number} [size.max] - maximum size
+   * @param {String|Number} [size.min] - минимальный размер
+   * @param {String|Number} [size.max] - максимальный размер
    * @return {Boolean}
    */
 
@@ -87,9 +87,9 @@ const Validators = {
   /**
    * Validates enums.
    *
-   * @param {String} value the string being validated
-   * @param {Object} ctx the object being validated
-   * @param {Array} enums array with allowed values
+   * @param {String} value проверяемая строка
+   * @param {Object} ctx проверяемый объект
+   * @param {Array} enums массив с допустимыми значениями
    * @return {Boolean}
    */
 
@@ -101,9 +101,9 @@ const Validators = {
   /**
    * Validates against given `regexp`.
    *
-   * @param {String} value the string beign validated
-   * @param {Object} ctx the object being validated
-   * @param {RegExp} regexp the regexp to validate against
+   * @param {String} value проверяемая строка
+   * @param {Object} ctx проверяемый объект
+   * @param {RegExp} regexp регулярное выражение для проверки
    * @return {Boolean}
    */
 

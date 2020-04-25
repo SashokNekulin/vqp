@@ -1,5 +1,5 @@
 /**
- * Custom errors.
+ * Настраиваемая ошибка.
  *
  * @private
  */
@@ -8,6 +8,7 @@ export default class ValidationError extends Error {
   constructor(message, path) {
     super(message);
 
+    defineProp(this, 'message', message);
     defineProp(this, 'path', path);
     defineProp(this, 'expose', true);
     defineProp(this, 'status', 400);

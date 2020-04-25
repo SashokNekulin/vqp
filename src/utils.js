@@ -2,7 +2,7 @@ import dot from '@eivifj/dot';
 import typeOf from 'component-type';
 
 /**
- * Assign given key and value (or object) to given object
+ * Назначить данный ключ и значение (или объект) данному объекту
  *
  * @private
  */
@@ -17,7 +17,7 @@ export function assign(key, val, obj) {
 }
 
 /**
- * Enumerate all permutations of `path`, replacing $ with array indices
+ * Перечислите все перестановки `path`, заменив $ индексами массива
  *
  * @private
  */
@@ -43,7 +43,7 @@ export function enumerate(path, obj, callback) {
 }
 
 /**
- * Walk object and call `callback` with path and prop name
+ * Идите по объекту и вызывайте `callback` с путем и именем реквизита
  *
  * @private
  */
@@ -72,7 +72,7 @@ export function walk(obj, callback, path, prop) {
 }
 
 /**
- * Join `path` with `prefix`
+ * Соединить `path` с `prefix`
  *
  * @private
  */

@@ -7,7 +7,7 @@ import ValidationError from './error';
 import { walk, enumerate, join, assign } from './utils';
 
 /**
- * A Schema defines the structure that objects should be validated against.
+ * Схема определяет структуру, по которой объекты должны проверяться.
  *
  * @example
  * const post = new Schema({
@@ -40,11 +40,11 @@ import { walk, enumerate, join, assign } from './utils';
  *   posts: [post]
  * })
  *
- * @param {Object} [obj] - schema definition
- * @param {Object} [opts] - options
- * @param {Boolean} [opts.typecast=false] - typecast values before validation
- * @param {Boolean} [opts.strip=true] - strip properties not defined in the schema
- * @param {Boolean} [opts.strict=false] - validation fails when object contains properties not defined in the schema
+ * @param {Object} [obj] - определение схемы
+ * @param {Object} [opts] - опции
+ * @param {Boolean} [opts.typecast=false] - Типовые значения перед проверкой
+ * @param {Boolean} [opts.strip=true] - свойства не определены в схеме
+ * @param {Boolean} [opts.strict=false] - проверка завершается неудачно, когда объект содержит свойства, не определенные в схеме
  */
 
 export default class Schema {
@@ -59,15 +59,15 @@ export default class Schema {
   }
 
   /**
-   * Create or update `path` with given `rules`.
+   * Создать или обновить `путь` с помощью заданных правил.
    *
    * @example
    * const schema = new Schema()
    * schema.path('name.first', { type: String })
    * schema.path('name.last').type(String).required()
    *
-   * @param {String} path - full path using dot-notation
-   * @param {Object|Array|String|Schema|Property} [rules] - rules to apply
+   * @param {String} path - полный путь с использованием dot-notation
+   * @param {Object|Array|String|Schema|Property} [rules] - правила для применения
    * @return {Property}
    */
 
@@ -76,17 +76,17 @@ export default class Schema {
     const suffix = parts.pop();
     const prefix = parts.join('.');
 
-    // Make sure full path is created
+    // Убедитесь, что полный путь создан
     if (prefix) {
       this.path(prefix);
     }
 
-    // Array index placeholder
+    // Заполнитель индекса массива
     if (suffix === '$') {
       this.path(prefix).type(Array);
     }
 
-    // Nested schema
+    // Вложенная схема
     if (rules instanceof Schema) {
       rules.hook((k, v) => this.path(join(k, path), v));
       return this.path(path, rules.props);
@@ -156,7 +156,7 @@ export default class Schema {
   }
 
   /**
-   * Typecast given `obj`.
+   * Тип приведен к `obj`.
    *
    * @param {Object} obj - the object to typecast
    * @return {Schema}
@@ -177,7 +177,7 @@ export default class Schema {
   }
 
   /**
-   * Strip all keys not defined in the schema
+   * Удалите все ключи, не определенные в схеме
    *
    * @param {Object} obj - the object to strip
    * @param {String} [prefix]
@@ -196,7 +196,7 @@ export default class Schema {
   }
 
   /**
-   * Create errors for all properties that are not defined in the schema
+   * Создать ошибки для всех свойств, которые не определены в схеме
    *
    * @param {Object} obj - the object to check
    * @return {Schema}

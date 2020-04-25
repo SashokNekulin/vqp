@@ -21,7 +21,7 @@ type Rule = Type
   | Schema
   | RuleArray
 
-// Remove when ts 3.7 is released
+
 interface RuleArray extends Array<Rule> {}
 
 interface SchemaDefinition {

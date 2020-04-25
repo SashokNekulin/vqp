@@ -2,11 +2,10 @@
 
 Validate object properties in javascript.
 
-
 ## Usage
 
-Define a schema and call `.validate()` with the object you want to validate.
-The `.validate()` function returns an array of validation errors.
+Определить схему и вызвать `.validate()` с объектом, который вы хотите проверить.
+Эта функция возвращает массив ошибок проверки.
 
 ```js
 import Schema from 'validate'
@@ -47,16 +46,16 @@ const user = new Schema({
 const errors = user.validate(obj)
 ```
 
-Each error has a `.path`, describing the full path of the property that failed validation, and a `.message` describing the error.
+Каждая ошибка имеет `.path`, описывающий полный путь свойства, которое не прошло проверку, и`.message`, описывающий ошибку.
 
 ```js
 errors[0].path //=> 'address.street'
 errors[0].message //=> 'address.street is required.'
 ```
 
-### Custom error messages
+### Собственные сообщения об ошибках
 
-You can override the default error messages by passing an object to `Schema#message()`.
+Вы можете переопределить сообщения об ошибках по умолчанию, передав объект `Schema#message()`.
 
 ```js
 const post = new Schema({
@@ -64,25 +63,25 @@ const post = new Schema({
 })
 
 post.message({
-  required: (path) => `${path} can not be empty.`
+  required: (path) => `${path} не может быть пустым.`
 })
 
 const [error] = post.validate({})
-assert(error.message = 'title can not be empty.')
+assert(error.message = 'Название не может быть пустым.')
 ```
 
-It is also possible to define messages for individual properties:
+Также возможно определить сообщения для отдельных свойств:
 
 ```js
 const post = new Schema({
   title: {
     required: true,
-    message: 'Title is required.'
+    message: 'Название обязательно.'
   }
 })
 ```
 
-And for individual validators:
+И для отдельных валидаторов:
 
 ```js
 const post = new Schema({
@@ -90,16 +89,16 @@ const post = new Schema({
     type: String,
     required: true,
     message: {
-      type: 'Title must be a string.',
-      required: 'Title is required.'
+      type: 'Название должно быть строкой.',
+      required: 'Название обязательно.'
     }
   }
 })
 ```
 
-### Nesting
+### Вложенность
 
-Objects and arrays can be nested as deep as you want:
+Объекты и массивы могут быть вложены так глубоко, как вы хотите:
 
 ```js
 const event = new Schema({
@@ -121,7 +120,7 @@ const event = new Schema({
 })
 ```
 
-Arrays can be defined implicitly, like in the above example, or explicitly:
+Массивы могут быть определены неявно, как в примере выше, или явно:
 
 ```js
 const post = new Schema({
@@ -132,7 +131,7 @@ const post = new Schema({
 })
 ```
 
-Array elements can also be defined individually:
+Элементы массива также могут быть определены индивидуально:
 
 ```js
 const user = new Schema({
@@ -146,7 +145,7 @@ const user = new Schema({
 })
 ```
 
-Nesting also works with schemas:
+Вложенность также работает со схемами:
 
 ```js
 const user = new Schema({
@@ -173,11 +172,11 @@ const post = new Schema({
 })
 ```
 
-If you think it should work, it probably works.
+Если вы думаете, что это должно сработать, то это, вероятно, работает.
 
 #### Naming conflicts
 
-Validate will naively assume that a nested object where _all_ property names are validators is not a nested object.
+Проверка будет наивно предполагать, что вложенный объект, в котором имена свойств _all_ являются валидаторами, не является вложенным объектом.
 
 ```js
 const schema = new Schema({
@@ -191,7 +190,7 @@ const schema = new Schema({
 });
 ```
 
-In this example, the `pet.type` property will be interpreted as a `type` rule, and the validations will not work as intended. To work around this we could use the slightly more verbose `properties` rule:
+В этом примере свойство `pet.type` будет интерпретироваться как правило`type`, и проверки не будут работать так, как задумано. Чтобы обойти это, мы могли бы использовать более подробное правило `properties`:
 
 ```js
 const schema = new Schema({
@@ -207,11 +206,11 @@ const schema = new Schema({
 });
 ```
 
-In this case the `type` property of `pets.properties` will be interpreted as a nested property, and the validations will work as intended.
+В этом случае свойство `type` для pets.properties\` будет интерпретироваться как вложенное свойство, и проверки будут работать так, как задумано.
 
-### Custom validators
+### Пользовательские валидаторы
 
-Custom validators can be defined by passing an object with named validators to `.use`:
+Пользовательские валидаторы могут быть определены путем передачи объекта с именованными валидаторами в `.use`:
 
 ```js
 const hexColor = val => /^#[0-9a-fA-F]$/.test(val)
@@ -224,17 +223,17 @@ const car = new Schema({
 })
 ```
 
-Define a custom error message for the validator:
+Определите пользовательское сообщение об ошибке для валидатора:
 
 ```js
 car.message({
-  hexColor: path => `${path} must be a valid color.`
+  hexColor: path => `${path} должен быть действительным цветом.`
 })
 ```
 
-### Custom types
+### Пользовательские типы
 
-Pass a constructor to `.type` to validate against a custom type:
+Передайте конструктор в `.type` для проверки на соответствие пользовательскому типу:
 
 ```js
 class Car {}
@@ -244,9 +243,9 @@ const user = new Schema({
 })
 ```
 
-### Chainable API
+### Цепочка API
 
-If you want to avoid constructing large objects, you can add paths to a schema by using the chainable API:
+Если вы хотите избежать построения больших объектов, вы можете добавить пути к схеме с помощью цепочки API:
 
 ```js
 const user = new Schema()
@@ -256,35 +255,35 @@ user
   .path('address.zip').type(String).required()
 ```
 
-Array elements can be defined by using `$` as a placeholder for indices:
+Элементы массива могут быть определены с помощью `$` в качестве заполнителя для индексов:
 
 ```js
 const user = new Schema()
 user.path('pets.$').type(String)
 ```
 
-This is equivalent to writing
+Это эквивалентно написанию
 
 ```js
 const user = new Schema({ pets: [{ type: String }]})
 ```
 
-### Typecasting
+### Приведение типов
 
-Values can be automatically typecast before validation.
-To enable typecasting, pass an options object to the `Schema` constructor with `typecast` set to `true`.
+Значения могут быть автоматически переданы перед проверкой.
+Чтобы включить приведение типов, передайте объект параметров конструктору `Schema` с параметром typecast, установленным в значение true.
 
 ```js
 const user = new Schema(definition, { typecast: true })
 ```
 
-You can override this setting by passing an option to `.validate()`.
+Вы можете переопределить этот параметр, передав опцию `.validate()`.
 
 ```js
 user.validate(obj, { typecast: false })
 ```
 
-To typecast custom types, you can register a typecaster:
+Чтобы настраивать пользовательские типы, вы можете зарегистрировать собственный тип:
 
 ```js
 class Car {}
@@ -300,11 +299,12 @@ user.typecaster({
 
 ### Property stripping
 
-By default, all values not defined in the schema will be stripped from the object.
-Set `.strip = false` on the options object to disable this behavior. This will likely be changed in a future version.
+По умолчанию все значения, не определенные в схеме, будут удалены из объекта.
+Установите `.strip = false` на объекте параметров, чтобы отключить это поведение. Это, вероятно, будет изменено в будущей версии.
 
-### Strict mode
-When strict mode is enabled, properties that are not defined in the schema will trigger a validation error. Set `.strict = true` on the options object to enable strict mode.
+### Строгий режим
+
+Когда строгий режим включен, свойства, которые не определены в схеме, вызовут ошибку проверки. Установите `.strict = true` для объекта параметров, чтобы включить строгий режим.
 
 ## API
 
@@ -391,17 +391,17 @@ When strict mode is enabled, properties that are not defined in the schema will 
 
 ### Property
 
-A property instance gets returned whenever you call `schema.path()`.
-Properties are also created internally when an object is passed to the Schema constructor.
+Экземпляр свойства возвращается при каждом вызове `schema.path()`.
+Свойства также создаются внутри, когда объект передается конструктору схемы.
 
 #### Parameters
 
--   `name` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** the name of the property
--   `schema` **[Schema](#schema)** parent schema
+-   `name` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** название свойства
+-   `schema` **[Schema](#schema)** вложеная схема
 
 #### message
 
-Registers messages.
+Регистрирует сообщения.
 
 ##### Parameters
 
@@ -410,19 +410,19 @@ Registers messages.
 ##### Examples
 
 ```javascript
-prop.message('something is wrong')
-prop.message({ required: 'thing is required.' })
+prop.message('что-то не так')
+prop.message({ required: 'параметр обязателен.' })
 ```
 
 Returns **[Property](#property)** 
 
 #### schema
 
-Mount given `schema` on current path.
+Смонтировать заданную схему на текущем пути.
 
 ##### Parameters
 
--   `schema` **[Schema](#schema)** the schema to mount
+-   `schema` **[Schema](#schema)** схема для монтирования
 
 ##### Examples
 
@@ -729,15 +729,15 @@ Returns **ValidationError**
 
 ### Schema
 
-A Schema defines the structure that objects should be validated against.
+Схема определяет структуру, по которой объекты должны проверяться.
 
 #### Parameters
 
--   `obj` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** schema definition (optional, default `{}`)
--   `opts` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** options (optional, default `{}`)
-    -   `opts.typecast` **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** typecast values before validation (optional, default `false`)
-    -   `opts.strip` **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** strip properties not defined in the schema (optional, default `true`)
-    -   `opts.strict` **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** validation fails when object contains properties not defined in the schema (optional, default `false`)
+-   `obj` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** определение схемы (optional, default `{}`)
+-   `opts` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** опции (optional, default `{}`)
+    -   `opts.typecast` **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Типовые значения перед проверкой (optional, default `false`)
+    -   `opts.strip` **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** свойства не определены в схеме (optional, default `true`)
+    -   `opts.strict` **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** проверка завершается неудачно, когда объект содержит свойства, не определенные в схеме (optional, default `false`)
 
 #### Examples
 
@@ -776,12 +776,12 @@ const author = new Schema({
 
 #### path
 
-Create or update `path` with given `rules`.
+Создать или обновить `путь` с помощью заданных правил.
 
 ##### Parameters
 
--   `path` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** full path using dot-notation
--   `rules` **([Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object) \| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array) \| [String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [Schema](#schema) \| [Property](#property))?** rules to apply
+-   `path` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** полный путь с использованием dot-notation
+-   `rules` **([Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object) \| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array) \| [String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [Schema](#schema) \| [Property](#property))?** правила для применения
 
 ##### Examples
 
