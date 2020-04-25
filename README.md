@@ -1,14 +1,14 @@
-# validate
+# VQP
 
-Validate object properties in javascript.
+Проверьте свойства объекта в javascript.
 
-## Usage
+## Использование
 
 Определить схему и вызвать `.validate()` с объектом, который вы хотите проверить.
 Эта функция возвращает массив ошибок проверки.
 
 ```js
-import Schema from 'validate'
+import Schema from 'vqp'
 
 const user = new Schema({
   username: {
@@ -435,16 +435,16 @@ Returns **[Property](#property)**
 
 #### use
 
-Validate using named functions from the given object.
-Error messages can be defined by providing an object with
-named error messages/generators to `schema.message()`
+Проверка с использованием именованных функций из данного объекта.
+Сообщения об ошибках можно определить, предоставив объекту
+именованные сообщения об ошибках / генераторы для `schema.message()`
 
-The message generator receives the value being validated,
-the object it belongs to and any additional arguments.
+Генератор сообщений получает проверяемое значение,
+объект, к которому он принадлежит, и любые дополнительные аргументы.
 
 ##### Parameters
 
--   `fns` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** object with named validation functions to call
+-   `fns` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** объект с именованными функциями проверки для вызова
 
 ##### Examples
 
@@ -467,11 +467,11 @@ Returns **[Property](#property)**
 
 #### required
 
-Registers a validator that checks for presence.
+Регистрирует валидатор, который проверяет наличие.
 
 ##### Parameters
 
--   `bool` **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?** `true` if required, `false` otherwise (optional, default `true`)
+-   `bool` **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?** `true` если требуется,`false` в противном случае (optional, default `true`)
 
 ##### Examples
 
@@ -483,11 +483,11 @@ Returns **[Property](#property)**
 
 #### type
 
-Registers a validator that checks if a value is of a given `type`
+Регистрирует валидатор, который проверяет, имеет ли значение заданный тип
 
 ##### Parameters
 
--   `type` **([String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function))** type to check for
+-   `type` **([String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function))** тип для проверки
 
 ##### Examples
 
@@ -503,7 +503,7 @@ Returns **[Property](#property)**
 
 #### string
 
-Convenience method for setting type to `String`
+Удобный метод для установки типа в `String`
 
 ##### Examples
 
@@ -515,7 +515,7 @@ Returns **[Property](#property)**
 
 #### number
 
-Convenience method for setting type to `Number`
+Удобный метод для установки типа на `Number`
 
 ##### Examples
 
@@ -527,7 +527,7 @@ Returns **[Property](#property)**
 
 #### array
 
-Convenience method for setting type to `Array`
+Удобный метод для установки типа в `Array`
 
 ##### Examples
 
@@ -539,7 +539,7 @@ Returns **[Property](#property)**
 
 #### date
 
-Convenience method for setting type to `Date`
+Удобный метод для установки типа на `Date`
 
 ##### Examples
 
@@ -551,13 +551,13 @@ Returns **[Property](#property)**
 
 #### length
 
-Registers a validator that checks length.
+Регистрирует валидатор, который проверяет длину.
 
 ##### Parameters
 
--   `rules` **([Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object) \| [Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))** object with `.min` and `.max` properties or a number
-    -   `rules.min` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** minimum length
-    -   `rules.max` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** maximum length
+-   `rules` **([Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object) \| [Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))** ОбЪект с `.min` и `.max` свойствами или Number
+    -   `rules.min` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** минимальная длина
+    -   `rules.max` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** максимальная длина
 
 ##### Examples
 
@@ -570,13 +570,13 @@ Returns **[Property](#property)**
 
 #### size
 
-Registers a validator that checks size.
+Регистрирует валидатор, который проверяет размер.
 
 ##### Parameters
 
--   `rules` **([Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object) \| [Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))** object with `.min` and `.max` properties or a number
-    -   `rules.min` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** minimum size
-    -   `rules.max` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** maximum size
+-   `rules` **([Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object) \| [Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))** ОбЪект с `.min` и `.max` свойствами или Number
+    -   `rules.min` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** минимальный размер
+    -   `rules.max` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** максимальный размер
 
 ##### Examples
 
@@ -589,12 +589,12 @@ Returns **[Property](#property)**
 
 #### enum
 
-Registers a validator for enums.
+Регистрирует валидатор для перечислений.
 
 ##### Parameters
 
 -   `enums`  
--   `rules` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** allowed values
+-   `rules` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** допустимые значения
 
 ##### Examples
 
@@ -606,11 +606,11 @@ Returns **[Property](#property)**
 
 #### match
 
-Registers a validator that checks if a value matches given `regexp`.
+Регистрирует валидатор, который проверяет, соответствует ли значение заданному `regexp`.
 
 ##### Parameters
 
--   `regexp` **[RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)** regular expression to match
+-   `regexp` **[RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)** регулярное выражение для соответствия
 
 ##### Examples
 
@@ -622,11 +622,11 @@ Returns **[Property](#property)**
 
 #### each
 
-Registers a validator that checks each value in an array against given `rules`.
+Регистрирует валидатор, который проверяет каждое значение в массиве на соответствие заданным «правилам».
 
 ##### Parameters
 
--   `rules` **([Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array) \| [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object) \| [Schema](#schema) \| [Property](#property))** rules to use
+-   `rules` **([Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array) \| [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object) \| [Schema](#schema) \| [Property](#property))** правила использования
 
 ##### Examples
 
@@ -641,11 +641,11 @@ Returns **[Property](#property)**
 
 #### elements
 
-Registers paths for array elements on the parent schema, with given array of rules.
+Регистрирует пути для элементов массива в родительской схеме с заданным массивом правил.
 
 ##### Parameters
 
--   `arr` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** array of rules to use
+-   `arr` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** массив правил для использования
 
 ##### Examples
 
@@ -657,11 +657,11 @@ Returns **[Property](#property)**
 
 #### properties
 
-Registers all properties from the given object as nested properties
+Регистрирует все свойства данного объекта как вложенные свойства
 
 ##### Parameters
 
--   `props` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** properties with rules
+-   `props` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** свойства с правилами
 
 ##### Examples
 
@@ -676,7 +676,7 @@ Returns **[Property](#property)**
 
 #### path
 
-Proxy method for schema path. Makes chaining properties together easier.
+Прокси-метод для пути к схеме. Упрощает сцепление свойств.
 
 ##### Parameters
 
@@ -692,11 +692,11 @@ schema
 
 #### typecast
 
-Typecast given `value`
+Приводит значение к заданому типу
 
 ##### Parameters
 
--   `value` **Mixed** value to typecast
+-   `value` **Mixed** значение
 
 ##### Examples
 
@@ -709,13 +709,13 @@ Returns **Mixed**
 
 #### validate
 
-Validate given `value`
+Проверка заданного "значения"
 
 ##### Parameters
 
--   `value` **Mixed** value to validate
--   `ctx` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** the object containing the value
--   `path` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** path of the value being validated (optional, default `this.name`)
+-   `value` **Mixed** значение для проверки
+-   `ctx` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** объект, содержащий значение
+-   `path` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** путь к проверяемому значению (optional, default `this.name`)
 
 ##### Examples
 
@@ -795,12 +795,12 @@ Returns **[Property](#property)**
 
 #### validate
 
-Validate given `obj`.
+Проверить `obj`.
 
 ##### Parameters
 
--   `obj` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** the object to validate
--   `opts` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** options, see [Schema](#schema-1) (optional, default `{}`)
+-   `obj` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** объект для проверки
+-   `opts` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** варианты см. [Schema](#schema-1) (optional, default `{}`)
 
 ##### Examples
 
@@ -816,7 +816,7 @@ Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Gl
 
 #### assert
 
-Assert that given `obj` is valid.
+Утверждайте, что данный "объект" является валидным.
 
 ##### Parameters
 
@@ -832,12 +832,12 @@ schema.assert({ name: 1 }) // Throws an error
 
 #### message
 
-Override default error messages.
+Переопределить сообщения об ошибках по умолчанию.
 
 ##### Parameters
 
--   `name` **([String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object))** name of the validator or an object with name-message pairs
--   `message` **([String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function))?** the message or message generator to use
+-   `name` **([String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object))** имя валидатора или объекта с парами имя-сообщение
+-   `message` **([String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function))?** сообщение или генератор сообщений для использования
 
 ##### Examples
 
@@ -855,12 +855,12 @@ Returns **[Schema](#schema)**
 
 #### validator
 
-Override default validators.
+Переопределить валидаторы по умолчанию.
 
 ##### Parameters
 
--   `name` **([String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object))** name of the validator or an object with name-function pairs
--   `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)?** the function to use
+-   `name` **([String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object))** имя валидатора или объекта с парами имя-функция
+-   `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)?** функция обратного вызова
 
 ##### Examples
 
@@ -876,12 +876,12 @@ Returns **[Schema](#schema)**
 
 #### typecaster
 
-Override default typecasters.
+Переопределить стандартные типы типов.
 
 ##### Parameters
 
--   `name` **([String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object))** name of the validator or an object with name-function pairs
--   `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)?** the function to use
+-   `name` **([String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object))** имя валидатора или объекта с парами имя-функция
+-   `fn` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)?** функция обратного вызова
 
 ##### Examples
 
